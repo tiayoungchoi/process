@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Process</title>
+  <style>
+    html {
+      font-family: monospace;
+      background-color: lightgray;
+      font-size: 14px;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100vh;
+      border: 1px solid black;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 20vw;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    #chinese1 {
+      color: red;
+    }
+
+    .highlight {
+      position: relative;
+      cursor: pointer;
+      color: blue;
+      text-decoration: underline;
+    }
+
+    .highlight:hover {
+      color: transparent;
+    }
+
+    .highlight:hover::after {
+      content: attr(data-original);
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #fff;
+      border: 1px solid black;
+      z-index: 10;
+      color: black;
+      padding: 2px 4px;
+    }
+
+    .fbi {
+      background-color: black;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    #log {
+      width: 50vw;
+      margin-top: 10px;
+    }
+
+    .header {
+      text-decoration: underline;
+      margin: 0;
+    }
+
+    h1 {
+      font-family: serif;
+    }
+
+    #cursorEye {
+      position: absolute;
+      width: 32px;
+      height: auto;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+    }
+
+    @media only screen and (max-width: 600px) {
+      input {
+        width: 80%;
+      }
+      img {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <img id="cursorEye" src="eye.webp" alt="cursor eye">
+
+  <h1>中共ification</h1>
+  <hr>
+
+  <p class="header">[Name]...Taeyoung Choi</p>
+  <p class="header">[Date Issued]...01/09/25</p>
+  <p class="header">[Last Edited]...28/11/25</p>
+
+  <p style="font-weight: bold;"">System-Bug-Debug</p>
+  <p><span style="font-weight: bold;">System</span></p>
+  <li> Windows XP, Windows 2000 Notepad</li>
+   <p><span style="font-weight: bold;">Bug</span></p>  
+   <li>When typing "Bush hid the facts", saving, and reopening, the text appeared as random Chinese characters.
+    This happened because the specific letter-and-space pattern was misinterpreted as UTF-16 encoded text, causing a decoding error.</li>
+  </p>
+
+  <hr>
+
+  <p style="font-weight: bold;">Reproduce the conditions</p>
+  <li>The far-right media environment in South Korea: any news is interpreted as “China’s doing.”</li>
+
+  <p style="font-weight: bold;">Find the bug</p>
+  <li>The biased, sinophobic reading that reduces every event to a single frame: blaming China.</li>
+  
+  <p style="font-weight: bold;">Determine the root cause</p>
+  <li>Collective anxiety leading to blaming people from the outside group</li>
+<li>polarisation makes this worse, using sinophobia as a tool.</li>
+
+<p style="font-weight: bold;">Fix the bug</p>
+  <li>Get a news article</li>
+<li>Replace all nouns in news articles with “China.”, exaggerating the biased logic and shows how absurd it is.</li>
+<li>Readers see every noun as “China,” exposing the sinophobic and polarized bias.</li>
+<li>Hovering on the word “China” reveals the original words, showing how not all of the political problems could not be related to China.</li>
+
+<p style="font-weight: bold;">Document</p>
+<li>Document the different versions of html code.</li>
+
+</p>
+
+<hr>
+<p style="font-weight: bold;">References</p>
+
+<p style="font-weight: bold;">Mark Lombardi – Narrative Structures</p>
+<p>System - US Politics <br>
+Bug - conspiracy theories and rumours created <br>
+Debug - Traces who is related to one another, finding the truth between the rumours/conspiracy theories</p>
+
+<img src="mark.png" alt="">
+
+<p style="font-weight: bold;">Trevor Paglen-Code Names of the Surveillance State</p>
+<p>System - 4,000 National Security Agency (NSA) and Government Communications Headquarters (GCHQ) surveillance program code names <br>
+Bug - Surveillance systems that citizens are not aware of that is watching them <br>
+Debug - Exposes the evidence of the US Surveillance Systems</p>
+
+<img src="trevor.png" alt="">
+
+<p style="font-weight: bold;">Jenny Holzer – Redaction Paintings</p>
+<p>System - Official government and military documents <br>
+Bug - when the government release them in to the public, they blank out some information, not being 100% open<br>
+Debug - recreates these documents to show how the government is not being fully open to the public</p>
+
+<img src="Jenny.png" alt="">
+
+<p style="font-weight: bold;">Lawrence Abu Hamdan - Conflicted Phonemes</p>
+<p>System - Dutch government uses the refugee’s accent to determine where one came from
+ <br>
+Bug - linguistic studies show off as scientific however is used as a political tool, where the accents differ from people to people
+<br>
+Debug - visualises the accents with graphic design to show how the system is wrong</p>
+
+<img src="Lawrence.png" alt="">
+
+
+<hr>
+
+  
+
+  <p>Experiment...[1]</p>
+
+  <p>My first experiment was aimed to recreate the 'Bush hid the facts' bug with html. When you type something into the input, the it will randomise those English characters into a random Chinese character. Try to write something below to see how it works. </p>
+  <input type="text" id="englishInput1" placeholder="type something...">
+  <div><span id="chinese1"></span></div>
+
+  <p>Experiment...[2]</p>
+
+  <p>My second experiment was to try figure out how to 'fix' the bug. When the far rights view media, they have this lens where they would see anything as Chineses' doing. Therefore I got a random article from the media and changed all the proper nouns to 'China' or 'Chinese'. However, if you hover on these proper nouns, you can see the 'truth', the original version of the article. This was my first attempt on 'fixing' this bug.(on mobile, click instead on hover)</p>
+  <iframe src="china.html" title="description"></iframe>
+
+  <p>Experiment...[3]</p>
+
+  <p>My third experiment was inspired by Jenny Holzer, where she recreated FBI documents that has been shown to the public, where the documents have black markers on the confidential information. However these black marker lines sometimes create conspiracy theories, making the public think "what are they hiding?". Therefore I tried to recreate this by getting an article online and blacking out all the proper nouns. The 'fixing' of the bug can be done by highlighting the blacked out words, where it reveals the original words.</p>
+  <iframe src="fbi.html" title="description"></iframe>
+
+  <p>Experiment...[4]</p>
+  <p>Experiment 4 was aimed to combine all the experiments that I had done. Therefore when some types something, it changes into a randomised Chinese character (from experiment 1), along with the blacked out characters (from experiment 3). However if you hover, it reveals what you really typed (experiment 3).</p>
+  <input type="text" id="englishInput" placeholder="type something and press enter...">
+  <div id="chinese2"></div>
+  <div id="log"></div>
+
+  <hr>
+
+  <p>Final...[1]</p>
+  <p>I had to come up with an idea to finalise the experiments I've did. In Korea, there's a term called "Keyboard Battle", indicating people fighting online. With the two vectorised men at the bottom, I wanted to create this scene of "keyboard battle", where the "leftist" is on the left, "rightist" is on the right (quite literal!)... and whatever you type, the extreme rightist would view it as Chinese related. However, if you hover to see the truth with the custom eye cursor that I've made, you can see what the truth is. The idea was that at the end it would almost create a pattern of these Chinese characters when people come to type some stuff on them.</p>
+  <iframe src="final1.html" title="description"></iframe>
+
+  <p>Final...[2]</p>
+  <p>I felt like something is missing, so I thought the extereme rightist could say some common phrases that actual extreme rightists say online, such as "I'm going to report you to CIA" (as most extreme rightists in Korea are Trump Supporters and they believe if they are pro-China they should never ever enter the US territory) I have also added some famous meme quotes where the CEO of Tiktok was interrogated by the US government because they are famous to be sinophobic.</p>
+  <iframe src="final2.html" title="description"></iframe>
+
+  <p>Final...[final]</p>
+
+  <p>...however the website felt a bit bland. And without explaiation it would have been difficult for people to understand the Korean politics going on here. Therefore with the about button, I added few contexts and this about pop up opens up as soon as you open the website. I also stylised to reflect the early web design, as my original bug was from Windows XP, thus wanted reflect the design in that era. I also felt like aligning everything to either right or left a bit restricting, so I made the Chinese characters are full width and the red text being randomly placed. Also because I really liked the pattern it creates when people leave many stuff, I added the print button that allows to print out the pattern.</p>
+  <iframe src="finalfinal.html" title="description"></iframe>
+
+  <script>
+    document.addEventListener('mousemove', e => {
+      const eye = document.getElementById('cursorEye');
+      eye.style.left = e.pageX + 'px';
+      eye.style.top = e.pageY + 'px';
+    });
+
+    function randomChinese() {
+      return String.fromCharCode(0x4E00 + Math.floor(Math.random() * (0x9FFF - 0x4E00)));
+    }
+
+    function toRandomChinese(text) {
+      let result = '';
+      for (let char of text) {
+        if (char === ' ') result += char;
+        else result += randomChinese();
+      }
+      return result;
+    }
+
+    const input1 = document.getElementById('englishInput1');
+    const output1 = document.getElementById('chinese1');
+
+    input1.addEventListener('input', () => {
+      output1.textContent = toRandomChinese(input1.value);
+    });
+
+    function toRandomChineseWithBlackChars(text) {
+      let result = '';
+      for (let char of text) {
+        if (char === ' ') {
+          result += ' ';
+          continue;
+        }
+        let chineseChar = randomChinese();
+        if (Math.random() < 0.6) {
+          result += `<span style="background-color:black;color:black;">${chineseChar}</span>`;
+        } else {
+          result += chineseChar;
+        }
+      }
+      return result;
+    }
+
+    const input = document.getElementById('englishInput');
+    const output = document.getElementById('chinese2');
+    const log = document.getElementById('log');
+
+    input.addEventListener('input', () => {
+      output.innerHTML = toRandomChineseWithBlackChars(input.value);
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === "Enter" && input.value.trim() !== "") {
+        const container = document.createElement('span');
+        container.style.position = 'relative';
+
+        const chineseSpan = document.createElement('span');
+        chineseSpan.innerHTML = toRandomChineseWithBlackChars(input.value) + ' ';
+
+        const tooltip = document.createElement('div');
+        tooltip.textContent = input.value;
+        tooltip.style.fontFamily = 'Times New Roman, serif';
+        tooltip.style.fontWeight = 'bold';
+        tooltip.style.position = 'absolute';
+        tooltip.style.top = '0';
+        tooltip.style.left = '0';
+        tooltip.style.background = '#fff';
+        tooltip.style.border = '1px solid #000';
+        tooltip.style.zIndex = '10';
+        tooltip.style.color = 'black';
+        tooltip.style.padding = '2px 4px';
+        tooltip.style.display = 'none';
+
+        container.appendChild(chineseSpan);
+        container.appendChild(tooltip);
+
+        container.addEventListener('mouseenter', () => {
+          tooltip.style.display = 'block';
+          chineseSpan.style.opacity = '0';
+        });
+        container.addEventListener('mouseleave', () => {
+          tooltip.style.display = 'none';
+          chineseSpan.style.opacity = '1';
+        });
+
+        log.appendChild(container);
+
+        input.value = "";
+        output.textContent = "";
+      }
+    });
+  </script>
+
+</body>
+</html>

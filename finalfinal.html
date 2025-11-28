@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中共ification</title>
+  <style>
+    html {
+      cursor: none;
+      background-color: gainsboro;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-size: 1vw;
+    }
+
+    input {
+      font-size: 1vw;
+      width: 86vw;
+      margin: 20px;
+      padding: 10px;
+      border-radius: 15px 15px 15px 15px;
+      border: none;
+      outline: none;
+      background-color: gainsboro;
+      box-shadow: 0 1px 10px 0px #000000, 0 0 20px 0px #000000, 0px -10px 28px rgba(255, 255, 255, 1), inset 0 0px 10px #000000, inset 0px 10px 10px rgba(255, 255, 255, 1);
+    }
+
+    #chinese {
+      font-size: 1vw;
+    }
+
+    #log {
+      font-size: 2vw;
+      width: 100vw;
+      margin: 0;
+      line-height: 0.5;
+    }
+
+    .leftman {
+      width: 20vw;
+      position: fixed;
+      bottom: 0vh;
+      padding: 1vw;
+    }
+
+    .rightman {
+      width: 20vw;
+      position: fixed;
+      right: 0vw;
+      bottom: 0vh;
+      padding: 1vw;
+    }
+
+    #aboutPopup {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      background-color: #FFFFFF;
+      border: 2px solid #000000;
+      padding: 20px;
+      z-index: 9999;
+      box-shadow: 0 1px 10px 0px #000000, 0 0 20px 0px #000000, 0px -10px 28px rgba(255, 255, 255, 1), inset 0 0px 10px #000000, inset 0px 10px 10px rgba(255, 255, 255, 1);
+      background-color: gainsboro;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    .closeButton {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    #aboutLink,
+    #printButton {
+      position: absolute;
+      top: 20px;
+      font-size: 1vw;
+      text-decoration: none;
+      cursor: pointer;
+      z-index: 1000;
+      font-weight: 700;
+      box-shadow: 0 1px 10px 0px #000000, 0 0 20px 0px #000000, 0px -10px 28px rgba(255, 255, 255, 1), inset 0 0px 10px #000000, inset 0px 10px 10px rgba(255, 255, 255, 1);
+      padding: 10px;
+      border-radius: 15px;
+    }
+
+    #aboutLink {
+      right: 20px;
+    }
+
+    #printButton {
+      right: 120px;
+    }
+
+    @media print {
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      input#englishInput,
+      #aboutLink,
+      #printButton {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <img id="cursorEye" src="eye.webp"
+    style="position:absolute; width:32px; height:auto; pointer-events:none; transform:translate(-50%, -50%);"
+    alt="cursor eye">
+
+  <input type="text" id="englishInput" placeholder="type and enter to chat to the extreme right wing...">
+  <div id="chinese"></div>
+  <img class="leftman" src="leftman.webp" alt="">
+  <img class="rightman" src="rightman.webp" alt="">
+  <div id="log"></div>
+
+  <div id="aboutLink">About</div>
+  <div id="printButton">Print</div>
+
+  <div id="aboutPopup">
+    <span id="closeButton" class="closeButton">×</span>
+    South Korea is being more and more polarised as time goes by. Talk to this extreme right wing Korean — whatever you
+    say to them, they'll think you're Chinese. But if you look into it closer, you can see the actual meaning.
+  </div>
+
+  <script>
+    document.addEventListener('mousemove', e => {
+      const eye = document.getElementById('cursorEye');
+      eye.style.left = e.pageX + 'px';
+      eye.style.top = e.pageY + 'px';
+    });
+
+    function randomChinese() {
+      return String.fromCharCode(0x4E00 + Math.floor(Math.random() * (0x9FFF - 0x4E00)));
+    }
+
+    function toRandomChineseWithBlackChars(text) {
+      let result = '';
+      for (let char of text) {
+        if (char === ' ') { result += ' '; continue; }
+        let chineseChar = randomChinese();
+        if (Math.random() < 0.6) {
+          result += `<span style="background-color:black;color:black;">${chineseChar}</span>`;
+        } else {
+          result += chineseChar;
+        }
+      }
+      return result;
+    }
+
+    const input = document.getElementById('englishInput');
+    const output = document.getElementById('chinese');
+    const log = document.getElementById('log');
+
+    input.addEventListener('input', () => {
+      output.innerHTML = toRandomChineseWithBlackChars(input.value);
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === "Enter" && input.value.trim() !== "") {
+        const container = document.createElement('span');
+        container.style.position = 'relative';
+
+        const chineseSpan = document.createElement('span');
+        chineseSpan.innerHTML = toRandomChineseWithBlackChars(input.value) + ' ';
+        chineseSpan.style.fontSize = '1vw';
+
+        const tooltip = document.createElement('div');
+        tooltip.textContent = input.value;
+        tooltip.style.fontWeight = 'bold';
+        tooltip.style.position = 'absolute';
+        tooltip.style.top = '1px';
+        tooltip.style.left = '1px';
+        tooltip.style.background = '#fff';
+        tooltip.style.border = '1px solid #000';
+        tooltip.style.zIndex = '10';
+        tooltip.style.color = 'black';
+        tooltip.style.padding = '5px';
+        tooltip.style.display = 'none';
+        tooltip.style.fontSize = '1vw';
+        tooltip.style.lineHeight = '1';
+        tooltip.style.boxShadow = '0 1px 10px 0px #000000, 0 0 20px 0px #000000, 0px -10px 28px rgba(255, 255, 255, 1), inset 0 0px 10px #000000, inset 0px 10px 10px rgba(255, 255, 255, 1)';
+        tooltip.style.backgroundColor = 'gainsboro';
+
+        container.appendChild(chineseSpan);
+        container.appendChild(tooltip);
+
+        container.addEventListener('mouseenter', () => {
+          tooltip.style.display = 'block';
+          chineseSpan.style.opacity = '0';
+        });
+        container.addEventListener('mouseleave', () => {
+          tooltip.style.display = 'none';
+          chineseSpan.style.opacity = '1';
+        });
+
+        log.appendChild(container);
+
+        const messages = [
+          "You're Chinese!",
+          "you're a spy!",
+          "You are a communist.",
+          "CCP OUT!",
+          "I'm gonna report you to the CIA",
+          "Have you ever been a member of the Chinese Communist Party?",
+          "Have you ever been associated or affiliated with the Chinese Communist Party?",
+          "Have you ever applied for the Chinese citizenship?"
+        ];
+
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+        const msgDiv = document.createElement('div');
+        msgDiv.textContent = randomMessage;
+        msgDiv.style.position = "absolute";
+        msgDiv.style.color = "red";
+        msgDiv.style.fontWeight = "bold";
+        msgDiv.style.fontSize = "1vw";
+        msgDiv.style.zIndex = "99999";
+        msgDiv.style.opacity = "1";
+
+        msgDiv.style.textShadow = `
+          -1px -1px 0 black,
+           1px -1px 0 black,
+          -1px  1px 0 black,
+           1px  1px 0 black,
+          -2px  0   0 black,
+           2px  0   0 black,
+           0   -2px 0 black,
+           0    2px 0 black
+        `;
+
+        const x = Math.random() * (window.innerWidth - 200);
+        const y = Math.random() * (window.innerHeight - 100);
+        msgDiv.style.left = x + "px";
+        msgDiv.style.top = y + "px";
+
+        document.body.appendChild(msgDiv);
+
+        input.value = "";
+        output.textContent = "";
+      }
+    });
+
+    const aboutLink = document.getElementById("aboutLink");
+    const aboutPopup = document.getElementById("aboutPopup");
+    const closeButton = document.getElementById("closeButton");
+
+    window.addEventListener("load", () => {
+      aboutPopup.style.display = "block";
+    });
+
+    aboutLink.addEventListener("click", function () {
+      aboutPopup.style.display = "block";
+    });
+
+    closeButton.addEventListener("click", function () {
+      aboutPopup.style.display = "none";
+    });
+
+    const printButton = document.getElementById("printButton");
+    printButton.addEventListener("click", function () {
+      window.print();
+    });
+
+  </script>
+
+</body>
+
+</html>
